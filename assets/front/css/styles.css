@@ -3633,6 +3633,8 @@ button.map-btn {
   position: relative;
   width: 100%;
   display: block;
+  overflow: hidden;
+  height: 200px;
 }
 .Rego-grid-thumb a {
   display: block;
@@ -8787,6 +8789,14 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
 
 
 
+
+
+
+
+
+
+
+
 .nav-bar {
   width: 100% !important;
   position: relative;
@@ -8810,7 +8820,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
   width: 100%;
 }
 
-.navbar-divider{
+.navbar-divider {
   width: 2px;
   height: 50%;
   background-color: #dddddd;
@@ -8836,9 +8846,9 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
 }
 
 .navbar-search-bar input::placeholder {
-    color: #000;
-    font-size: 15px;
-    font-weight: 400;
+  color: #000;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .navbar-search-bar input {
@@ -8851,8 +8861,8 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
 }
 
 .navbar-search-bar select {
-    cursor: pointer;
-    position: relative;
+  cursor: pointer;
+  position: relative;
   height: 100%;
   border-radius: 50px;
   padding: 0 0 0 20px;
@@ -8864,7 +8874,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
   background-color: #00000015;
 }
 
-.navbar-search-bar select:hover{
+.navbar-search-bar select:hover {
   background-color: #00000015;
 }
 
@@ -8887,8 +8897,8 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
 }
 
 .navbar-profile a {
-    font-size: 16.1px;
-    color: #000;
+  font-size: 16.1px;
+  color: #000;
 }
 
 .navbar-profile a:hover {
@@ -8896,25 +8906,25 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
 }
 
 .navbar-profile a i {
-    color: #5dc3f3;
-    margin-right: 10px;
+  color: #5dc3f3;
+  margin-right: 10px;
 }
 
 .navbar-profile a.add-listing-btn {
-    background-color: #5dc3f3;
-    border: 2px solid #5dc3f3;
-    padding: 5px 15px 5px 15px;
-    /* width: 100px; */
-    color: white;
-    font-size: 15px;
-    font-weight: 400;
-    border-radius: 5px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all ease 0.4s;
+  background-color: #5dc3f3;
+  border: 2px solid #5dc3f3;
+  padding: 5px 15px 5px 15px;
+  /* width: 100px; */
+  color: white;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all ease 0.4s;
 }
 
 .navbar-profile a.add-listing-btn:hover {
@@ -8928,17 +8938,17 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
 }
 
 .navbar-profile a.add-listing-btn i {
-    font-size: 10px;
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #00000025;
-    color: #fff;
-    margin: 0;
-    transition: all ease 0.4s;
+  font-size: 10px;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000025;
+  color: #fff;
+  margin: 0;
+  transition: all ease 0.4s;
 }
 
 .navbar-profile a.profile-logo {
@@ -8987,9 +8997,6 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
   .navbar-profile a.add-listing-btn {
     display: none;
   }
-  .navbar-profile a.profile-logo {
-    display: block;
-  }
 }
 
 @media (max-width: 869px) {
@@ -9017,6 +9024,9 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
   .navbar-search-bar button {
     width: 80px;
   }
+  .navbar-container{
+    justify-content: center;
+  }
 }
 
 @media (max-width: 545px) {
@@ -9039,7 +9049,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
   .navbar-search-bar select {
     display: none !important;
   }
-  .navbar-divider{
+  .navbar-divider {
     display: none;
   }
   .navbar-search-bar input {
@@ -9082,6 +9092,10 @@ footer.skin-dark-footer ul.footer-bottom-social li a:focus {
 
 
 
+
+
+
+
 body.carousel-container {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -9092,12 +9106,12 @@ body.carousel-container {
 }
 
 .carousel-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-    justify-content: center;
-    border-top: 1px solid #e3e3e3;
-    padding: 0 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  border-top: 1px solid #e3e3e3;
+  padding: 0 20px;
 }
 
 .category-container {
@@ -9111,7 +9125,7 @@ body.carousel-container {
   scroll-behavior: smooth;
 }
 
-.category-container::-webkit-scrollbar{
+.category-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -9125,13 +9139,13 @@ body.carousel-container {
   text-align: center;
   cursor: pointer;
   border-bottom: 2px solid #fff;
-    -webkit-user-select: none; /* Safari */
+  -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
   color: #737071 !important;
 }
 
-.category-item:hover{
+.category-item:hover {
   border-bottom: 2px solid #00000030;
 }
 
@@ -9180,6 +9194,26 @@ body.carousel-container {
   border: 1px solid #00000070;
 }
 
+.carousel-arrow {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #00000070;
+}
+
 .carousel-arrow-left {
   left: 0;
   margin-left: 3%;
@@ -9193,106 +9227,181 @@ body.carousel-container {
   box-shadow: -10px 0px 20px 25px #fff;
 }
 
+@media (max-width: 900px){
+  .carousel-arrow{
+    display: none !important;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.container{
+.container {
   width: 100% !important;
   margin: 0 auto !important;
 }
 
-#product-card-section{
+#product-card-section {
   max-width: 100% !important;
 }
 
 
+.home-listing{
+  padding: 10px 0 !important;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.bottom-navbar{
+.models-divider{
   width: 100%;
-  height: 80px;
+  /* background-color: red; */
+  height: 2px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bottom-navbar {
+  width: 100%;
+  height: fit-content;
   position: fixed;
-  background-color: red;
+  background-color: #fff;
   display: none;
-  top: 91.5%;
+  bottom: 0 !important;
   z-index: 999999;
   padding: 0 !important;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 -4px 8px 0px #00000030;
+  padding: 5px !important;
 }
 
-.bottom-navbar-container{
+.bottom-navbar-container {
   width: 100%;
   padding: 0 15px !important;
-
 }
 
-.bottom-navbar-container ul{
+.bottom-navbar-container ul {
+  all: unset;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 5.5%;
   padding: 0 !important;
+  list-style: none;
 }
 
 
-@media(max-width: 545px){
-.bottom-navbar{
-  display: block;
+.bottom-navbar-container ul li a i {
+  font-size: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 0.3s;
+}
+
+.bottom-navbar-container ul li a i:hover{
+ background-color: #00000015;
+}
+
+.bottom-navbar-container ul li:nth-child(3) a i{
+  font-size: 25px;
+  width: 90px;
+  height: 90px;
+  transform: translateY(-40%);
+  box-shadow: 0 -4px 8px 0px #00000030;
+  background-color: #5dc3f3;
+  color: #fff !important;
+  transition: all ease 0.3s;
+}
+
+.bottom-navbar-container ul li:nth-child(3) a i:hover{
+  background-color: #4898bd;
+  color: #121212 !important;
+}
+
+@media (max-width: 900px){
+.bottom-navbar {
+    display: block;
+  }
+   .bottom-navbar-container ul {
+  gap: 8%;
+}
+}
+
+@media (max-width: 768px) {
+   .bottom-navbar-container ul {
+  gap: 5%;
+}
+}
+
+@media (max-width: 500px) {
+  .bottom-navbar-container ul {
+  gap: 3.5%;
+}
+.bottom-navbar-container ul li a i {
+  font-size: 22px;
+  width: 60px;
+  height: 60px;
+}
+.bottom-navbar-container ul li:nth-child(3) a i{
+  width: 70px;
+  height: 70px;
+  font-size: 20px;
+}
+}
+
+@media (max-width: 380px){
+  /* .bottom-navbar{
+    top: 93.6vh;
+  } */
+.bottom-navbar-container ul {
+  gap: 2%;
+}
+.bottom-navbar-container ul li a i {
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+}
+.bottom-navbar-container ul li:nth-child(3) a i{
+  width: 50px;
+  height: 50px;
 }
 }
