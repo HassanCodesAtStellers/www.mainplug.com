@@ -87,7 +87,7 @@ button.toast-close-button {
 }
 #toast-container {
   position: fixed;
-  z-index: 999999;
+  z-home: 999999;
   pointer-events: none;
 }
 #toast-container * {

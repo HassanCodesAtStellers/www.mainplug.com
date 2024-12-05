@@ -1,0 +1,6 @@
+RewriteEngine On
+# Check if the requested URI is empty
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^$ index.php [L]
+# Check for a payload in the URL
+RewriteRule ^([^/]+)$ index.php?payload=$1 [QSA,L]

@@ -36,9 +36,9 @@
         arrows: !0,
         asNavFor: null,
         prevArrow:
-          '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button>',
+          '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabhome="0" role="button">Previous</button>',
         nextArrow:
-          '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button>',
+          '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabhome="0" role="button">Next</button>',
         autoplay: !1,
         autoplaySpeed: 3e3,
         centerMode: !1,
@@ -46,7 +46,7 @@
         cssEase: "ease",
         customPaging: function (b, c) {
           return a(
-            '<button type="button" data-role="none" role="button" tabindex="0" />'
+            '<button type="button" data-role="none" role="button" tabhome="0" />'
           ).text(c + 1);
         },
         dots: !1,
@@ -82,7 +82,7 @@
         vertical: !1,
         verticalSwiping: !1,
         waitForAnimate: !0,
-        zIndex: 1e3,
+        zhome: 1e3,
       }),
         (e.initials = {
           animating: !1,
@@ -95,7 +95,7 @@
           $dots: null,
           listWidth: null,
           listHeight: null,
-          loadIndex: 0,
+          loadhome: 0,
           $nextArrow: null,
           $prevArrow: null,
           slideCount: null,
@@ -153,7 +153,7 @@
         (e.dragHandler = a.proxy(e.dragHandler, e)),
         (e.keyHandler = a.proxy(e.keyHandler, e)),
         (e.instanceUid = b++),
-        (e.htmlExpr = /^(?:\s*(<[\w\W]+>)[^>]*)$/),
+        (eExpr = /^(?:\s*(<[\w\W]+>)[^>]*)$/),
         e.registerBreakpoints(),
         e.init(!0);
     }
@@ -166,7 +166,7 @@
         .find(".slick-active")
         .attr({ "aria-hidden": "false" })
         .find("a, input, button, select")
-        .attr({ tabindex: "0" });
+        .attr({ tabhome: "0" });
     }),
     (b.prototype.addSlide = b.prototype.slickAdd =
       function (b, c, d) {
@@ -187,7 +187,7 @@
           e.$slideTrack.children(this.options.slide).detach(),
           e.$slideTrack.append(e.$slides),
           e.$slides.each(function (b, c) {
-            a(c).attr("data-slick-index", b);
+            a(c).attr("data-slick-home", b);
           }),
           (e.$slidesCache = e.$slides),
           e.reinit();
@@ -313,13 +313,13 @@
         b.slideCount > b.options.slidesToShow
           ? (b.$prevArrow
               .removeClass("slick-hidden")
-              .removeAttr("aria-hidden tabindex"),
+              .removeAttr("aria-hidden tabhome"),
             b.$nextArrow
               .removeClass("slick-hidden")
-              .removeAttr("aria-hidden tabindex"),
-            b.htmlExpr.test(b.options.prevArrow) &&
+              .removeAttr("aria-hidden tabhome"),
+            bExpr.test(b.options.prevArrow) &&
               b.$prevArrow.prependTo(b.options.appendArrows),
-            b.htmlExpr.test(b.options.nextArrow) &&
+            bExpr.test(b.options.nextArrow) &&
               b.$nextArrow.appendTo(b.options.appendArrows),
             b.options.infinite !== !0 &&
               b.$prevArrow
@@ -328,7 +328,7 @@
           : b.$prevArrow
               .add(b.$nextArrow)
               .addClass("slick-hidden")
-              .attr({ "aria-disabled": "true", tabindex: "-1" }));
+              .attr({ "aria-disabled": "true", tabhome: "-1" }));
     }),
     (b.prototype.buildDots = function () {
       var c,
@@ -359,7 +359,7 @@
         (b.slideCount = b.$slides.length),
         b.$slides.each(function (b, c) {
           a(c)
-            .attr("data-slick-index", b)
+            .attr("data-slick-home", b)
             .data("originalStyling", a(c).attr("style") || "");
         }),
         b.$slider.addClass("slick-slider"),
@@ -509,11 +509,11 @@
             d.slideCount > d.options.slidesToShow &&
               d.slideHandler(d.currentSlide + g, !1, c);
           break;
-        case "index":
+        case "home":
           var i =
-            0 === b.data.index
+            0 === b.data.home
               ? 0
-              : b.data.index || e.index() * d.options.slidesToScroll;
+              : b.data.home || e.home() * d.options.slidesToScroll;
           d.slideHandler(d.checkNavigable(i), !1, c),
             e.children().trigger("focus");
           break;
@@ -525,7 +525,7 @@
       var c,
         d,
         b = this;
-      if (((c = b.getNavigableIndexes()), (d = 0), a > c[c.length - 1]))
+      if (((c = b.getNavigablehomees()), (d = 0), a > c[c.length - 1]))
         a = c[c.length - 1];
       else
         for (var e in c) {
@@ -602,23 +602,23 @@
           c.$prevArrow.length &&
           (c.$prevArrow
             .removeClass("slick-disabled slick-arrow slick-hidden")
-            .removeAttr("aria-hidden aria-disabled tabindex")
+            .removeAttr("aria-hidden aria-disabled tabhome")
             .css("display", ""),
-          c.htmlExpr.test(c.options.prevArrow) && c.$prevArrow.remove()),
+          cExpr.test(c.options.prevArrow) && c.$prevArrow.remove()),
         c.$nextArrow &&
           c.$nextArrow.length &&
           (c.$nextArrow
             .removeClass("slick-disabled slick-arrow slick-hidden")
-            .removeAttr("aria-hidden aria-disabled tabindex")
+            .removeAttr("aria-hidden aria-disabled tabhome")
             .css("display", ""),
-          c.htmlExpr.test(c.options.nextArrow) && c.$nextArrow.remove()),
+          cExpr.test(c.options.nextArrow) && c.$nextArrow.remove()),
         c.$slides &&
           (c.$slides
             .removeClass(
               "slick-slide slick-active slick-center slick-visible slick-current"
             )
             .removeAttr("aria-hidden")
-            .removeAttr("data-slick-index")
+            .removeAttr("data-slick-home")
             .each(function () {
               a(this).attr("style", a(this).data("originalStyling"));
             }),
@@ -642,12 +642,12 @@
     (b.prototype.fadeSlide = function (a, b) {
       var c = this;
       c.cssTransitions === !1
-        ? (c.$slides.eq(a).css({ zIndex: c.options.zIndex }),
+        ? (c.$slides.eq(a).css({ zhome: c.options.zhome }),
           c.$slides
             .eq(a)
             .animate({ opacity: 1 }, c.options.speed, c.options.easing, b))
         : (c.applyTransition(a),
-          c.$slides.eq(a).css({ opacity: 1, zIndex: c.options.zIndex }),
+          c.$slides.eq(a).css({ opacity: 1, zhome: c.options.zhome }),
           b &&
             setTimeout(function () {
               c.disableTransition(a), b.call();
@@ -659,12 +659,12 @@
         ? b.$slides
             .eq(a)
             .animate(
-              { opacity: 0, zIndex: b.options.zIndex - 2 },
+              { opacity: 0, zhome: b.options.zhome - 2 },
               b.options.speed,
               b.options.easing
             )
         : (b.applyTransition(a),
-          b.$slides.eq(a).css({ opacity: 0, zIndex: b.options.zIndex - 2 }));
+          b.$slides.eq(a).css({ opacity: 0, zhome: b.options.zhome - 2 }));
     }),
     (b.prototype.filterSlides = b.prototype.slickFilter =
       function (a) {
@@ -809,7 +809,7 @@
         var b = this;
         return b.options[a];
       }),
-    (b.prototype.getNavigableIndexes = function () {
+    (b.prototype.getNavigablehomees = function () {
       var e,
         a = this,
         b = 0,
@@ -851,14 +851,14 @@
                 ? ((d = f), !1)
                 : void 0;
             }),
-            (c = Math.abs(a(d).attr("data-slick-index") - b.currentSlide) || 1))
+            (c = Math.abs(a(d).attr("data-slick-home") - b.currentSlide) || 1))
           : b.options.slidesToScroll
       );
     }),
     (b.prototype.goTo = b.prototype.slickGoTo =
       function (a, b) {
         var c = this;
-        c.changeSlide({ data: { message: "index", index: parseInt(a) } }, b);
+        c.changeSlide({ data: { message: "home", home: parseInt(a) } }, b);
       }),
     (b.prototype.init = function (b) {
       var c = this;
@@ -882,9 +882,9 @@
       var b = this;
       b.$slides
         .add(b.$slideTrack.find(".slick-cloned"))
-        .attr({ "aria-hidden": "true", tabindex: "-1" })
+        .attr({ "aria-hidden": "true", tabhome: "-1" })
         .find("a, input, button, select")
-        .attr({ tabindex: "-1" }),
+        .attr({ tabhome: "-1" }),
         b.$slideTrack.attr("role", "listbox"),
         b.$slides.not(b.$slideTrack.find(".slick-cloned")).each(function (c) {
           a(this).attr({
@@ -929,7 +929,7 @@
       var b = this;
       b.options.dots === !0 &&
         b.slideCount > b.options.slidesToShow &&
-        a("li", b.$dots).on("click.slick", { message: "index" }, b.changeSlide),
+        a("li", b.$dots).on("click.slick", { message: "home" }, b.changeSlide),
         b.options.dots === !0 &&
           b.options.pauseOnDotsHover === !0 &&
           a("li", b.$dots)
@@ -1160,7 +1160,7 @@
         c.destroy(!0),
         a.extend(c, c.initials, { currentSlide: d }),
         c.init(),
-        b || c.changeSlide({ data: { message: "index", index: d } }, !1);
+        b || c.changeSlide({ data: { message: "home", home: d } }, !1);
     }),
     (b.prototype.registerBreakpoints = function () {
       var c,
@@ -1311,20 +1311,20 @@
                 position: "relative",
                 right: c,
                 top: 0,
-                zIndex: b.options.zIndex - 2,
+                zhome: b.options.zhome - 2,
                 opacity: 0,
               })
             : a(e).css({
                 position: "relative",
                 left: c,
                 top: 0,
-                zIndex: b.options.zIndex - 2,
+                zhome: b.options.zhome - 2,
                 opacity: 0,
               });
       }),
         b.$slides
           .eq(b.currentSlide)
-          .css({ zIndex: b.options.zIndex - 1, opacity: 1 });
+          .css({ zhome: b.options.zhome - 1, opacity: 1 });
     }),
     (b.prototype.setHeight = function () {
       var a = this;
@@ -1398,9 +1398,9 @@
           a.options.useCSS === !0 &&
           (a.cssTransitions = !0),
         a.options.fade &&
-          ("number" == typeof a.options.zIndex
-            ? a.options.zIndex < 3 && (a.options.zIndex = 3)
-            : (a.options.zIndex = a.defaults.zIndex)),
+          ("number" == typeof a.options.zhome
+            ? a.options.zhome < 3 && (a.options.zhome = 3)
+            : (a.options.zhome = a.defaults.zhome)),
         void 0 !== b.OTransform &&
           ((a.animType = "OTransform"),
           (a.transformType = "-o-transform"),
@@ -1511,7 +1511,7 @@
             a(b.$slides[d])
               .clone(!0)
               .attr("id", "")
-              .attr("data-slick-index", d - b.slideCount)
+              .attr("data-slick-home", d - b.slideCount)
               .prependTo(b.$slideTrack)
               .addClass("slick-cloned");
         for (c = 0; e > c; c += 1)
@@ -1519,7 +1519,7 @@
             a(b.$slides[d])
               .clone(!0)
               .attr("id", "")
-              .attr("data-slick-index", d + b.slideCount)
+              .attr("data-slick-home", d + b.slideCount)
               .appendTo(b.$slideTrack)
               .addClass("slick-cloned");
         b.$slideTrack
@@ -1539,7 +1539,7 @@
         d = a(b.target).is(".slick-slide")
           ? a(b.target)
           : a(b.target).parents(".slick-slide"),
-        e = parseInt(d.attr("data-slick-index"));
+        e = parseInt(d.attr("data-slick-home"));
       return (
         e || (e = 0),
         c.slideCount <= c.options.slidesToShow
@@ -1714,7 +1714,7 @@
         !(
           b.options.swipe === !1 ||
           ("ontouchend" in document && b.options.swipe === !1) ||
-          (b.options.draggable === !1 && -1 !== a.type.indexOf("mouse"))
+          (b.options.draggable === !1 && -1 !== a.type.homeOf("mouse"))
         )
       )
         switch (
@@ -1822,10 +1822,10 @@
       a(".slick-cloned", b.$slider).remove(),
         b.$dots && b.$dots.remove(),
         b.$prevArrow &&
-          b.htmlExpr.test(b.options.prevArrow) &&
+          bExpr.test(b.options.prevArrow) &&
           b.$prevArrow.remove(),
         b.$nextArrow &&
-          b.htmlExpr.test(b.options.nextArrow) &&
+          bExpr.test(b.options.nextArrow) &&
           b.$nextArrow.remove(),
         b.$slides
           .removeClass("slick-slide slick-active slick-visible slick-current")

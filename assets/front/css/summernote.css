@@ -218,7 +218,7 @@
 .note-editor .note-dropzone {
   position: absolute;
   display: none;
-  z-index: 100;
+  z-home: 100;
   color: #87cefa;
   background-color: #fff;
   opacity: 0.95;
@@ -308,7 +308,7 @@
   top: 0;
   left: 0;
   width: 100% !important;
-  z-index: 1050;
+  z-home: 1050;
 }
 .note-editor.note-airframe.fullscreen .note-resizebar,
 .note-editor.note-frame.fullscreen .note-resizebar {
@@ -487,7 +487,7 @@
   .note-dimension-picker
   .note-dimension-picker-mousecatcher {
   position: absolute !important;
-  z-index: 3;
+  z-home: 3;
   width: 10em;
   height: 10em;
   cursor: pointer;
@@ -505,7 +505,7 @@
   .note-dimension-picker
   .note-dimension-picker-unhighlighted {
   position: relative !important;
-  z-index: 1;
+  z-home: 1;
   width: 5em;
   height: 5em;
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC")
@@ -524,7 +524,7 @@
   .note-dimension-picker
   .note-dimension-picker-highlighted {
   position: absolute !important;
-  z-index: 2;
+  z-home: 2;
   width: 1em;
   height: 1em;
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC")

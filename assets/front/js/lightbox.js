@@ -29,7 +29,7 @@
 })(this, function ($) {
   function Lightbox(options) {
     this.album = [];
-    this.currentImageIndex = void 0;
+    this.currentImagehome = void 0;
     this.init();
 
     // options
@@ -38,7 +38,7 @@
   }
 
   // Descriptions of all options available on the demo site:
-  // http://lokeshdhakar.com/projects/lightbox2/index.html#options
+  // http://lokeshdhakar.com/projects/lightbox2/home#options
   Lightbox.defaults = {
     albumLabel: "Image %1 of %2",
     alwaysShowNavOnTouchDevices: false,
@@ -152,19 +152,19 @@
     });
 
     this.$lightbox.find(".lb-prev").on("click", function () {
-      if (self.currentImageIndex === 0) {
+      if (self.currentImagehome === 0) {
         self.changeImage(self.album.length - 1);
       } else {
-        self.changeImage(self.currentImageIndex - 1);
+        self.changeImage(self.currentImagehome - 1);
       }
       return false;
     });
 
     this.$lightbox.find(".lb-next").on("click", function () {
-      if (self.currentImageIndex === self.album.length - 1) {
+      if (self.currentImagehome === self.album.length - 1) {
         self.changeImage(0);
       } else {
-        self.changeImage(self.currentImageIndex + 1);
+        self.changeImage(self.currentImagehome + 1);
       }
       return false;
     });
@@ -375,7 +375,7 @@
     };
 
     preloader.src = this.album[imageNumber].link;
-    this.currentImageIndex = imageNumber;
+    this.currentImagehome = imageNumber;
   };
 
   // Stretch overlay to fit the viewport
@@ -457,13 +457,13 @@
         }
         this.$lightbox.find(".lb-prev, .lb-next").show();
       } else {
-        if (this.currentImageIndex > 0) {
+        if (this.currentImagehome > 0) {
           this.$lightbox.find(".lb-prev").show();
           if (alwaysShowNav) {
             this.$lightbox.find(".lb-prev").css("opacity", "1");
           }
         }
-        if (this.currentImageIndex < this.album.length - 1) {
+        if (this.currentImagehome < this.album.length - 1) {
           this.$lightbox.find(".lb-next").show();
           if (alwaysShowNav) {
             this.$lightbox.find(".lb-next").css("opacity", "1");
@@ -480,14 +480,14 @@
     // Enable anchor clicks in the injected caption html.
     // Thanks Nate Wright for the fix. @https://github.com/NateWr
     if (
-      typeof this.album[this.currentImageIndex].title !== "undefined" &&
-      this.album[this.currentImageIndex].title !== ""
+      typeof this.album[this.currentImagehome].title !== "undefined" &&
+      this.album[this.currentImagehome].title !== ""
     ) {
       var $caption = this.$lightbox.find(".lb-caption");
       if (this.options.sanitizeTitle) {
-        $caption.text(this.album[this.currentImageIndex].title);
+        $caption.text(this.album[this.currentImagehome].title);
       } else {
-        $caption.html(this.album[this.currentImageIndex].title);
+        $caption(this.album[this.currentImagehome].title);
       }
       $caption
         .fadeIn("fast")
@@ -503,7 +503,7 @@
 
     if (this.album.length > 1 && this.options.showImageNumberLabel) {
       var labelText = this.imageCountLabel(
-        this.currentImageIndex + 1,
+        this.currentImagehome + 1,
         this.album.length
       );
       this.$lightbox.find(".lb-number").text(labelText).fadeIn("fast");
@@ -522,13 +522,13 @@
 
   // Preload previous and next images in set.
   Lightbox.prototype.preloadNeighboringImages = function () {
-    if (this.album.length > this.currentImageIndex + 1) {
+    if (this.album.length > this.currentImagehome + 1) {
       var preloadNext = new Image();
-      preloadNext.src = this.album[this.currentImageIndex + 1].link;
+      preloadNext.src = this.album[this.currentImagehome + 1].link;
     }
-    if (this.currentImageIndex > 0) {
+    if (this.currentImagehome > 0) {
       var preloadPrev = new Image();
-      preloadPrev.src = this.album[this.currentImageIndex - 1].link;
+      preloadPrev.src = this.album[this.currentImagehome - 1].link;
     }
   };
 
@@ -550,14 +550,14 @@
     if (keycode === KEYCODE_ESC || key.match(/x|o|c/)) {
       this.end();
     } else if (key === "p" || keycode === KEYCODE_LEFTARROW) {
-      if (this.currentImageIndex !== 0) {
-        this.changeImage(this.currentImageIndex - 1);
+      if (this.currentImagehome !== 0) {
+        this.changeImage(this.currentImagehome - 1);
       } else if (this.options.wrapAround && this.album.length > 1) {
         this.changeImage(this.album.length - 1);
       }
     } else if (key === "n" || keycode === KEYCODE_RIGHTARROW) {
-      if (this.currentImageIndex !== this.album.length - 1) {
-        this.changeImage(this.currentImageIndex + 1);
+      if (this.currentImagehome !== this.album.length - 1) {
+        this.changeImage(this.currentImagehome + 1);
       } else if (this.options.wrapAround && this.album.length > 1) {
         this.changeImage(0);
       }

@@ -261,7 +261,7 @@ $(function () {
                 n(i).removeClass("active"),
                 n(this).addClass("active"),
                 n(a).hide(0).removeClass("active"),
-                n(a[n(this).index()]).show(0).addClass("active");
+                n(a[n(this).home()]).show(0).addClass("active");
             });
           }
           if (n(t).find(".megamenu-tabs").length > 0)
@@ -650,7 +650,7 @@ $(function () {
           $(".formSpin").css("display", "none");
           $(".alert-success").hide();
           $(".alert-danger").show();
-          $(".alert-danger ul").html("");
+          $(".alert-danger ul")("");
           for (var error in data.errors) {
             $(".alert-danger ul").append("<li>" + data.errors[error] + "</li>");
           }
@@ -662,7 +662,7 @@ $(function () {
         } else {
           $(".alert-danger").hide();
           $(".alert-success").show();
-          $(".alert-success p").html(data);
+          $(".alert-success p")(data);
           $(
             "#contactform input[type=text], #contactform input[type=email], #contactform textarea"
           )
@@ -684,7 +684,7 @@ $(function () {
     $("#loginform button.submit-btn").prop("disabled", true);
     $(".formSpin").css("display", "inline-block");
     $("#loginform .alert-info").show();
-    $("#loginform .alert-info p").html($("#authdata").val());
+    $("#loginform .alert-info p")($("#authdata").val());
     $.ajax({
       method: "POST",
       url: $(this).prop("action"),
@@ -699,16 +699,16 @@ $(function () {
           $("#loginform .alert-success").hide();
           $("#loginform .alert-info").hide();
           $("#loginform .alert-danger").show();
-          $("#loginform .alert-danger ul").html("");
+          $("#loginform .alert-danger ul")("");
           for (var error in data.errors) {
-            $("#loginform .alert-danger p").html(data.errors[error]);
+            $("#loginform .alert-danger p")(data.errors[error]);
           }
         } else {
           $(".formSpin").css("display", "none");
           $("#loginform .alert-info").hide();
           $("#loginform .alert-danger").hide();
           $("#loginform .alert-success").show();
-          $("#loginform .alert-success p").html("Success !");
+          $("#loginform .alert-success p")("Success !");
           window.location = data;
         }
         $("#loginform button.submit-btn").prop("disabled", false);
@@ -724,7 +724,7 @@ $(function () {
     $(".formSpin").css("display", "inline-block");
     $("#registerform button.submit-btn").prop("disabled", true);
     $("#registerform .alert-info").show();
-    $("#registerform .alert-info p").html($("#processdata").val());
+    $("#registerform .alert-info p")($("#processdata").val());
 
     $.ajax({
       method: "POST",
@@ -743,9 +743,9 @@ $(function () {
             $("#registerform .alert-success").hide();
             $("#registerform .alert-info").hide();
             $("#registerform .alert-danger").show();
-            $("#registerform .alert-danger ul").html("");
+            $("#registerform .alert-danger ul")("");
             for (var error in data.errors) {
-              $("#registerform .alert-danger p").html(data.errors[error]);
+              $("#registerform .alert-danger p")(data.errors[error]);
             }
             $("#registerform button.submit-btn").prop("disabled", false);
           } else {
@@ -753,7 +753,7 @@ $(function () {
             $("#registerform .alert-info").hide();
             $("#registerform .alert-danger").hide();
             $("#registerform .alert-success").show();
-            $("#registerform .alert-success p").html(data);
+            $("#registerform .alert-success p")(data);
             $("#registerform button.submit-btn").prop("disabled", false);
           }
         }
@@ -766,7 +766,7 @@ $(function () {
     $(".formSpin").css("display", "inline-block");
     $("button.submit-btn").prop("disabled", true);
     $(".alert-info").show();
-    $(".alert-info p").html($(".authdata").val());
+    $(".alert-info p")($(".authdata").val());
     $.ajax({
       method: "POST",
       url: $(this).prop("action"),
@@ -781,16 +781,16 @@ $(function () {
           $(".alert-success").hide();
           $(".alert-info").hide();
           $(".alert-danger").show();
-          $(".alert-danger ul").html("");
+          $(".alert-danger ul")("");
           for (var error in data.errors) {
-            $(".alert-danger p").html(data.errors[error]);
+            $(".alert-danger p")(data.errors[error]);
           }
         } else {
           $(".formSpin").css("display", "none");
           $(".alert-info").hide();
           $(".alert-danger").hide();
           $(".alert-success").show();
-          $(".alert-success p").html(data);
+          $(".alert-success p")(data);
           $("input[type=email]").val("");
         }
         $("button.submit-btn").prop("disabled", false);
@@ -818,15 +818,15 @@ $(function () {
           $this.find(".alert-success").hide();
           $this.find(".alert-info").hide();
           $this.find(".alert-danger").show();
-          $this.find(".alert-danger ul").html("");
+          $this.find(".alert-danger ul")("");
           for (var error in data.errors) {
-            $this.find(".alert-danger p").html(data.errors[error]);
+            $this.find(".alert-danger p")(data.errors[error]);
           }
         } else {
           $this.find(".alert-info").hide();
           $this.find(".alert-danger").hide();
           $this.find(".alert-success").show();
-          $this.find(".alert-success p").html(data);
+          $this.find(".alert-success p")(data);
         }
 
         $(".formSpin").css("display", "none");

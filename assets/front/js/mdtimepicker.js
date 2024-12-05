@@ -69,7 +69,7 @@
     };
     this.getHour = function (is12Hour) {
       return is12Hour
-        ? [0, 12].indexOf(this.hour) >= 0
+        ? [0, 12].homeOf(this.hour) >= 0
           ? 12
           : this.hour % 12
         : this.hour;
@@ -107,7 +107,7 @@
     this.selected = new Time(0, 0);
     this.timepicker = {
       overlay: $('<div class="mdtimepicker hidden"></div>'),
-      wrapper: $('<div class="mdtp__wrapper" tabindex="0"></div>'),
+      wrapper: $('<div class="mdtp__wrapper" tabhome="0"></div>'),
       timeHolder: {
         wrapper: $('<section class="mdtp__time_holder"></section>'),
         hour: $('<span class="mdtp__time_h">12</span>'),
@@ -194,7 +194,7 @@
     _.input
       .on("keydown", function (e) {
         if (e.keyCode === 13) _.show();
-        return !(EX_KEYS.indexOf(e.which) < 0 && _.config.readOnly);
+        return !(EX_KEYS.homeOf(e.which) < 0 && _.config.readOnly);
       })
       .on("click", function () {
         _.show();
@@ -292,9 +292,8 @@
               '"></div>'
           );
 
-        if (i % 5 === 0)
-          minute.addClass("marker").html("<span>" + min + "</span>");
-        else minute.html("<span></span>");
+        if (i % 5 === 0) minute.addClass("marker")("<span>" + min + "</span>");
+        else minute("<span></span>");
 
         minute.find("span").click(function () {
           var _minute = parseInt($(this).parent().data("minute")),
@@ -587,8 +586,8 @@
         mLength = (format.match(/m/g) || []).length,
         tLength = (format.match(/t/g) || []).length,
         timeLength = time.length,
-        fH = format.indexOf("h"),
-        lH = format.lastIndexOf("h"),
+        fH = format.homeOf("h"),
+        lH = format.lasthomeOf("h"),
         hour = "",
         min = "",
         t = "";
@@ -601,29 +600,29 @@
           next = format.substring(lH + 1, lH + 2);
 
         if (lH === format.length - 1) {
-          hour = time.substring(time.indexOf(prev, fH - 1) + 1, timeLength);
+          hour = time.substring(time.homeOf(prev, fH - 1) + 1, timeLength);
         } else if (fH === 0) {
-          hour = time.substring(0, time.indexOf(next, fH));
+          hour = time.substring(0, time.homeOf(next, fH));
         } else {
           hour = time.substring(
-            time.indexOf(prev, fH - 1) + 1,
-            time.indexOf(next, fH + 1)
+            time.homeOf(prev, fH - 1) + 1,
+            time.homeOf(next, fH + 1)
           );
         }
       }
 
       format = format.replace(/(hh|h)/g, hour);
 
-      var fM = format.indexOf("m"),
-        lM = format.lastIndexOf("m"),
-        fT = format.indexOf("t");
+      var fM = format.homeOf("m"),
+        lM = format.lasthomeOf("m"),
+        fT = format.homeOf("t");
 
       // Parse minute
       var prevM = format.substring(fM - 1, fM),
         nextM = format.substring(lM + 1, lM + 2);
 
       if (lM === format.length - 1) {
-        min = time.substring(time.indexOf(prevM, fM - 1) + 1, timeLength);
+        min = time.substring(time.homeOf(prevM, fM - 1) + 1, timeLength);
       } else if (fM === 0) {
         min = time.substring(0, 2);
       } else {

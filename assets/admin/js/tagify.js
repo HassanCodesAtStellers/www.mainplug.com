@@ -233,7 +233,7 @@
                         return a.push(t.title);
                       }),
                         (s.value = s.value.filter(function (t) {
-                          return -1 != a.indexOf(t.title);
+                          return -1 != a.homeOf(t.title);
                         }));
                     }, 20);
               }
@@ -318,10 +318,10 @@
               : "X" == t.target.tagName
               ? this.removeTag(t.target.parentNode)
               : i &&
-                ((e = this.getNodeIndex(i)),
+                ((e = this.getNodehome(i)),
                 this.trigger("click", {
                   tag: i,
-                  index: e,
+                  home: e,
                   data: this.value[e],
                 }));
           },
@@ -336,7 +336,7 @@
           onEditTagBlur: function (t) {
             var e,
               i = t.closest("tag"),
-              s = this.getNodeIndex(i),
+              s = this.getNodehome(i),
               n = this.input.normalize(t) || t.originalValue,
               a = i.isValid;
             (void 0 !== a && !0 !== a) ||
@@ -455,16 +455,16 @@
           },
         },
       },
-      getNodeIndex: function (t) {
+      getNodehome: function (t) {
         for (var e = 0; (t = t.previousElementSibling); ) e++;
         return e;
       },
       isTagDuplicate: function (e) {
-        return this.value.findIndex(function (t) {
+        return this.value.findhome(function (t) {
           return e.trim().toLowerCase() === t.value.toLowerCase();
         });
       },
-      getTagIndexByValue: function (i) {
+      getTaghomeByValue: function (i) {
         var s = [];
         return (
           this.DOM.scope.querySelectorAll("tag").forEach(function (t, e) {
@@ -474,7 +474,7 @@
         );
       },
       getTagElmByValue: function (t) {
-        var e = this.getTagIndexByValue(t)[0];
+        var e = this.getTaghomeByValue(t)[0];
         return this.DOM.scope.querySelectorAll("tag")[e];
       },
       markTagByValue: function (t, e) {
@@ -578,7 +578,7 @@
         return (
           i &&
             t &&
-            -1 != t.indexOf(e) &&
+            -1 != t.homeOf(e) &&
             ((s = this.createTagElem(i)),
             this.value.push(i),
             (t = t.replace(e, s.outerHTML + "&#8288;"))),
@@ -601,7 +601,7 @@
 
           )
             if (e.nodeType === Node.TEXT_NODE) {
-              if (-1 == (s = e.nodeValue.indexOf(a))) continue;
+              if (-1 == (s = e.nodeValue.homeOf(a))) continue;
               (n = e.splitText(s)),
                 (i = this.createTagElem(t)),
                 (n.nodeValue = n.nodeValue.replace(a, "")),
@@ -613,7 +613,7 @@
             this.update(),
             this.trigger(
               "add",
-              this.extend({}, { index: this.value.length, tag: i }, t)
+              this.extend({}, { home: this.value.length, tag: i }, t)
             )),
             (this.state.tag = null);
         }
@@ -640,7 +640,7 @@
                 s.markTagByValue(t.value),
                 s.trigger("invalid", {
                   data: t,
-                  index: s.value.length,
+                  home: s.value.length,
                   message: e,
                 })),
               (i = s.createTagElem(t)),
@@ -660,7 +660,7 @@
                   ),
                   s.trigger("add", {
                     tag: i,
-                    index: s.value.length - 1,
+                    home: s.value.length - 1,
                     data: t,
                   }))
                 : s.settings.keepInvalidTags ||
@@ -709,7 +709,7 @@
         if (t && t instanceof HTMLElement) {
           "string" == typeof t && (t = this.getTagElmByValue(t));
           var s,
-            n = this.getNodeIndex(t);
+            n = this.getNodehome(t);
           i && 10 < i
             ? ((t.style.width =
                 parseFloat(window.getComputedStyle(t).width) + "px"),
@@ -720,7 +720,7 @@
             e ||
               ((s = this.value.splice(n, 1)[0]),
               this.update(),
-              this.trigger("remove", { tag: t, index: n, data: s }));
+              this.trigger("remove", { tag: t, home: n, data: s }));
         }
         function a() {
           t.parentNode && t.parentNode.removeChild(t);
@@ -870,7 +870,7 @@
                   return (
                     t.preventDefault(),
                     (i =
-                      this.suggestedListItems[this.getNodeIndex(e)] ||
+                      this.suggestedListItems[this.getNodehome(e)] ||
                       this.input.value),
                     this.addTags([i], !0),
                     this.dropdown.hide.call(this),
@@ -895,7 +895,7 @@
                   return t.className.includes("tagify__dropdown__item");
                 })[0])
                   ? ((e =
-                      this.suggestedListItems[this.getNodeIndex(i)] ||
+                      this.suggestedListItems[this.getNodehome(i)] ||
                       this.input.value),
                     this.addTags([e], !0),
                     this.dropdown.hide.call(this))
@@ -931,7 +931,7 @@
             (0 ==
               (e = s[a] instanceof Object ? s[a] : { value: s[a] }).value
                 .toLowerCase()
-                .indexOf(t.toLowerCase()) &&
+                .homeOf(t.toLowerCase()) &&
               -1 == this.isTagDuplicate(e.value) &&
               n-- &&
               i.push(e),

@@ -92,7 +92,7 @@
   display: inline-block;
   margin: 5px 0 5px 5px;
   position: relative;
-  z-index: 1;
+  z-home: 1;
   cursor: default;
   -webkit-transition: 0.13s ease-out;
   -o-transition: 0.13s ease-out;
@@ -145,7 +145,7 @@
   bottom: 0;
   -webkit-box-shadow: 0 0 0 16px #e5e5e5 inset;
   box-shadow: 0 0 0 16px #e5e5e5 inset;
-  z-index: -1;
+  z-home: -1;
   pointer-events: none;
   -webkit-transition: 120ms ease;
   -o-transition: 120ms ease;
@@ -244,7 +244,7 @@
   text-align: center;
   border-radius: 50px;
   position: absolute;
-  z-index: 1;
+  z-home: 1;
   right: calc(0.5em - 2px);
   top: 50%;
   cursor: pointer;
@@ -323,7 +323,7 @@
   line-height: 1.8;
   position: absolute;
   top: 0;
-  z-index: 1;
+  z-home: 1;
   color: #000;
   white-space: nowrap;
   pointer-events: none;
@@ -366,7 +366,7 @@
 }
 .tagify__dropdown {
   position: absolute;
-  z-index: 999;
+  z-home: 999;
   background: #fff;
   max-height: 300px;
   overflow: auto;

@@ -9,11 +9,8 @@
     <meta name="csrf-token" content="" />
     <title>MainPlug.com</title>
 
-    <link href="../../../../../assets/front/css/styles.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="../../../../../assets/front/css/styles.php?color=f41b3b"
-    />
+    <link href="assets/front/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/front/css/styles?color=f41b3b" />
 
     <link
       href="https://fonts.googleapis.com/css?family=Jost&display=swap"
@@ -23,27 +20,15 @@
     <link
       rel="stylesheet"
       id="colorr"
-      href="../../../../../assets/front/css/font.php?font_familly=Jost"
+      href="assets/front/css/font?font_familly=Jost"
     />
 
-    <link
-      href="../../../../../assets/front/css/summernote.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../../../assets/front/css/toastr.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../../../assets/front/css/mdtimepicker.css"
-    />
-    <link href="../../../../../assets/admin/css/tagify.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../../../../assets/front/css/custom.css" />
-    <link
-      rel="shortcut icon"
-      href="../../../../../assets/images/plug-logo.png"
-    />
+    <link href="assets/front/css/summernote.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/front/css/toastr.min.css" />
+    <link rel="stylesheet" href="assets/front/css/mdtimepicker.css" />
+    <link href="assets/admin/css/tagify.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/front/css/custom.css" />
+    <link rel="shortcut icon" href="assets/images/plug-logo.png" />
 
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -64,8 +49,8 @@
       class="preloader"
       id="preloader"
       style="
-        background: url(../../../../../assets/images/preloader.gif) no-repeat
-          scroll center center #fff;
+        background: url(assets/images/preloader.gif) no-repeat scroll center
+          center #fff;
       "
     ></div>
 
@@ -81,18 +66,15 @@
         <div class="container">
           <nav id="navigation" class="navigation navigation-landscape">
             <div class="nav-header">
-              <a class="nav-brand fixed-logo" href="../../../../../index.html"
-                ><img
-                  src="../../../../../assets/images/mainplug-logo.png"
-                  class="logo"
-                  alt=""
+              <a class="nav-brand fixed-logo" href="home"
+                ><img src="assets/images/mainplug-logo.png" class="logo" alt=""
               /></a>
 
               <div class="nav-toggle"></div>
               <div class="mobile_nav">
                 <ul>
                   <li>
-                    <a href="../../../../../user/login" class="theme-cl fs-lg">
+                    <a href="user/login" class="theme-cl fs-lg">
                       <i class="lni lni-user"></i>
                     </a>
                   </li>
@@ -102,36 +84,30 @@
             <div class="nav-menus-wrapper" style="transition-property: none">
               <ul class="nav-menu">
                 <li>
-                  <a href="../../../../../index.html" target="_self">Home</a>
+                  <a href="home" target="_self">Home</a>
                 </li>
                 <li>
-                  <a href="../../../../../listing.html" target="_self"
-                    >Listing</a
-                  >
+                  <a href="listing" target="_self">Listing</a>
                 </li>
                 <li>
-                  <a href="../../../../../pricing-plans.html" target="_self"
-                    >Pricing</a
-                  >
+                  <a href="pricing-plans" target="_self">Pricing</a>
                 </li>
                 <li>
-                  <a href="../../../../../blogs.html" target="_self">Blog</a>
+                  <a href="blogs" target="_self">Blog</a>
                 </li>
                 <li>
-                  <a href="../../../../../contact.html" target="_self"
-                    >Contact</a
-                  >
+                  <a href="contact" target="_self">Contact</a>
                 </li>
               </ul>
 
               <ul class="nav-menu nav-menu-social align-to-right">
                 <li>
-                  <a href="../../../../../user/login.html" class="ft-bold">
+                  <a href="user/login" class="ft-bold">
                     <i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
                   </a>
                 </li>
                 <li class="add-listing">
-                  <a href="../../../../../user/listing/type">
+                  <a href="user/listing/type">
                     <i class="fas fa-plus me-2"></i>Add Listing
                   </a>
                 </li>
@@ -155,9 +131,7 @@
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="../../../../../index.html" class="text-light"
-                      >Home</a
-                    >
+                    <a href="home" class="text-light">Home</a>
                   </li>
                   <li
                     class="breadcrumb-item active theme-cl"
@@ -181,7 +155,7 @@
               <!-- Icon -->
               <div class="">
                 <img
-                  src="../../../../../assets/images/qghSZ1Wy1678955732.png"
+                  src="assets/images/qghSZ1Wy1678955732.png"
                   class="img-fluid"
                   alt=""
                 />
@@ -193,9 +167,7 @@
                 The page you requested could not be found&lt;br&gt;
               </h5>
               <!-- Button -->
-              <a
-                class="btn rounded theme-bg text-light"
-                href="../../../../../index.html"
+              <a class="btn rounded theme-bg text-light" href="home"
                 >Go To Home Page</a
               >
             </div>
@@ -256,8 +228,7 @@
 
         function cookieExists(name) {
           return (
-            document.cookie.split("; ").indexOf(name + "=" + COOKIE_VALUE) !==
-            -1
+            document.cookie.split("; ").homeOf(name + "=" + COOKIE_VALUE) !== -1
           );
         }
 
@@ -306,30 +277,30 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../../../../../assets/front/js/jquery.min.js"></script>
-    <script src="../../../../../assets/front/js/bootstrap.min.js"></script>
-    <script src="../../../../../assets/front/js/popper.min.js"></script>
-    <script src="../../../../../assets/front/js/summernote.js"></script>
-    <script src="../../../../../assets/front/js/slick.js"></script>
-    <script src="../../../../../assets/front/js/jquery.magnific-popup.min.js"></script>
-    <script src="../../../../../assets/front/js/dropzone.js"></script>
-    <script src="../../../../../assets/front/js/counterup.js"></script>
-    <script src="../../../../../assets/front/js/lightbox.js"></script>
-    <script src="../../../../../assets/front/js/moment.min.js"></script>
-    <script src="../../../../../assets/front/js/daterangepicker.js"></script>
-    <script src="../../../../../assets/front/js/lightbox.js"></script>
-    <script src="../../../../../assets/front/js/jQuery.style.switcher.js"></script>
-    <script src="../../../../../assets/front/js/toastr.min.js"></script>
-    <script src="../../../../../assets/front/js/mdtimepicker.js"></script>
-    <script src="../../../../../assets/admin/js/tagify.js"></script>
-    <script src="../../../../../assets/front/js/custom.js"></script>
+    <script src="assets/front/js/jquery.min.js"></script>
+    <script src="assets/front/js/bootstrap.min.js"></script>
+    <script src="assets/front/js/popper.min.js"></script>
+    <script src="assets/front/js/summernote.js"></script>
+    <script src="assets/front/js/slick.js"></script>
+    <script src="assets/front/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/front/js/dropzone.js"></script>
+    <script src="assets/front/js/counterup.js"></script>
+    <script src="assets/front/js/lightbox.js"></script>
+    <script src="assets/front/js/moment.min.js"></script>
+    <script src="assets/front/js/daterangepicker.js"></script>
+    <script src="assets/front/js/lightbox.js"></script>
+    <script src="assets/front/js/jQuery.style.switcher.js"></script>
+    <script src="assets/front/js/toastr.min.js"></script>
+    <script src="assets/front/js/mdtimepicker.js"></script>
+    <script src="assets/admin/js/tagify.js"></script>
+    <script src="assets/front/js/custom.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
 
     <script>
       "use strict";
-      let mainurl = "../../../../../index.html";
+      let mainurl = "home";
       let tawkto = "1";
     </script>
 

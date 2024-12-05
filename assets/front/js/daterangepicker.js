@@ -251,8 +251,8 @@
         this.container.find(".applyBtn").addClass(this.applyButtonClasses),
       this.cancelButtonClasses.length &&
         this.container.find(".cancelBtn").addClass(this.cancelButtonClasses),
-      this.container.find(".applyBtn").html(this.locale.applyLabel),
-      this.container.find(".cancelBtn").html(this.locale.cancelLabel),
+      this.container.find(".applyBtn")(this.locale.applyLabel),
+      this.container.find(".cancelBtn")(this.locale.cancelLabel),
       this.container
         .find(".drp-calendar")
         .on("click.daterangepicker", ".prev", e.proxy(this.clickPrev, this))
@@ -368,13 +368,11 @@
             this.startDate.clone().add(this.maxSpan).isBefore(this.endDate) &&
             (this.endDate = this.startDate.clone().add(this.maxSpan)),
           (this.previousRightTime = this.endDate.clone()),
-          this.container
-            .find(".drp-selected")
-            .html(
-              this.startDate.format(this.locale.format) +
-                this.locale.separator +
-                this.endDate.format(this.locale.format)
-            ),
+          this.container.find(".drp-selected")(
+            this.startDate.format(this.locale.format) +
+              this.locale.separator +
+              this.endDate.format(this.locale.format)
+          ),
           this.isShowing || this.updateElement(),
           this.updateMonthsInView();
       },
@@ -398,13 +396,11 @@
                 .attr("disabled", "disabled")
                 .addClass("disabled")),
           this.endDate &&
-            this.container
-              .find(".drp-selected")
-              .html(
-                this.startDate.format(this.locale.format) +
-                  this.locale.separator +
-                  this.endDate.format(this.locale.format)
-              ),
+            this.container.find(".drp-selected")(
+              this.startDate.format(this.locale.format) +
+                this.locale.separator +
+                this.endDate.format(this.locale.format)
+            ),
           this.updateMonthsInView(),
           this.updateCalendars(),
           this.updateFormInputs();
@@ -675,9 +671,7 @@
         }
         (Y += "</tbody>"),
           (Y += "</table>"),
-          this.container
-            .find(".drp-calendar." + a + " .calendar-table")
-            .html(Y);
+          this.container.find(".drp-calendar." + a + " .calendar-table")(Y);
       },
       renderTimePicker: function (t) {
         if ("right" != t || this.endDate) {
@@ -700,7 +694,7 @@
             (a = this.endDate.clone()), (i = this.startDate);
             var n = this.container.find(".drp-calendar.right .calendar-time");
             if (
-              "" != n.html() &&
+              "" != n() &&
               (a.hour(a.hour() || n.find(".hourselect option:selected").val()),
               a.minute(
                 a.minute() || n.find(".minuteselect option:selected").val()
@@ -816,7 +810,7 @@
                     ">PM</option>"),
               (e += "</select>");
           }
-          this.container.find(".drp-calendar." + t + " .calendar-time").html(e);
+          this.container.find(".drp-calendar." + t + " .calendar-time")(e);
         }
       },
       updateFormInputs: function () {

@@ -86,7 +86,7 @@ li.breadcrumb-item a {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 999;
+  z-home: 999;
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -310,7 +310,7 @@ div#curriculam {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1;
+  z-home: 1;
   height: calc(2.2125rem + 2px);
   padding: 0.45rem 0.9rem;
   font-weight: 400;
@@ -326,7 +326,7 @@ div#curriculam {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
+  z-home: 3;
   display: block;
   height: 2.2125rem;
   padding: 0.45rem 0.9rem;
@@ -344,7 +344,7 @@ div#curriculam {
   top: 0px;
   width: 100%;
   height: 100%;
-  z-index: 9999999;
+  z-home: 9999999;
 }
 
 #quizQuestion h5.card-title {
@@ -546,7 +546,7 @@ table#geniustable tbody td {
   -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  z-index: 9;
+  z-home: 9;
 }
 
 .kyc-area .remove {
@@ -565,7 +565,7 @@ table#geniustable tbody td {
   -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  z-index: 9;
+  z-home: 9;
 }
 
 .back-preview-image-certificate {
@@ -587,7 +587,7 @@ table#geniustable tbody td {
 .autocomplete-items {
   position: absolute;
   border-top: none;
-  z-index: 99;
+  z-home: 99;
   /*position the autocomplete items to be the same width as the container:*/
   top: 100%;
   left: 0px;
@@ -842,7 +842,7 @@ table.dataTable thead td {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(admin-bg.html) no-repeat center center / cover;
+  background: url(admin-bg) no-repeat center center / cover;
   position: relative;
 }
 
@@ -859,7 +859,7 @@ table.dataTable thead td {
   margin: 0 auto;
   background: #fff;
   position: relative;
-  z-index: 1;
+  z-home: 1;
 }
 
 .login--card .btn,
@@ -909,7 +909,7 @@ table.dataTable thead td {
 #setgallery .upload-img-btn input {
   width: 200px;
   height: 45px;
-  z-index: 10;
+  z-home: 10;
   top: 0;
   left: 0;
   position: absolute;
@@ -925,7 +925,7 @@ table.dataTable thead td {
 }
 
 #setgallery .upload-img-btn label {
-  z-index: 5;
+  z-home: 5;
   width: 170px;
   height: 45px;
   background-color: #2d3274;
@@ -1192,7 +1192,7 @@ td img {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1;
+  z-home: 1;
   height: calc(2.2125rem + 2px);
   padding: 0.45rem 0.9rem;
   font-weight: 400;
@@ -1208,7 +1208,7 @@ td img {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
+  z-home: 3;
   display: block;
   height: 2.2125rem;
   padding: 0.45rem 0.9rem;
@@ -1227,7 +1227,7 @@ td img {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 999;
+  z-home: 999;
   display: none;
 }
 

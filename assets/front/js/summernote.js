@@ -117,7 +117,7 @@
                 if (
                   (this.options &&
                     this.options.contents &&
-                    e.html(this.options.contents),
+                    e(this.options.contents),
                   this.options &&
                     this.options.className &&
                     e.addClass(this.options.className),
@@ -346,7 +346,7 @@
           ? "DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted"
           : "input",
         m = {
-          isMac: navigator.appVersion.indexOf("Mac") > -1,
+          isMac: navigator.appVersion.homeOf("Mac") > -1,
           isMSIE: u,
           isEdge: h,
           isFF: !h && /firefox/i.test(c),
@@ -474,7 +474,7 @@
       }
       function w(t, e) {
         if (t && t.length && e) {
-          if (t.indexOf) return -1 !== t.indexOf(e);
+          if (t.homeOf) return -1 !== t.homeOf(e);
           if (t.contains) return t.contains(e);
         }
         return !1;
@@ -488,14 +488,14 @@
           tail: k,
           prev: function (t, e) {
             if (t && t.length && e) {
-              var n = t.indexOf(e);
+              var n = t.homeOf(e);
               return -1 === n ? null : t[n - 1];
             }
             return null;
           },
           next: function (t, e) {
             if (t && t.length && e) {
-              var n = t.indexOf(e);
+              var n = t.homeOf(e);
               return -1 === n ? null : t[n + 1];
             }
             return null;
@@ -776,7 +776,7 @@
       }
       var ht = T("TEXTAREA");
       function ft(t, e) {
-        var n = ht(t[0]) ? t.val() : t.html();
+        var n = ht(t[0]) ? t.val() : t();
         return e ? n.replace(/[\n\r]/g, "") : n;
       }
       var pt = {
@@ -940,7 +940,7 @@
         },
         commonAncestor: function (t, e) {
           for (var n = V(t), o = e; o; o = o.parentNode)
-            if (n.indexOf(o) > -1) return o;
+            if (n.homeOf(o) > -1) return o;
           return null;
         },
         wrap: function (t, e) {
@@ -1142,11 +1142,11 @@
                     this.invoke("codeview.sync"),
                     e
                       ? this.layoutInfo.codable.val()
-                      : this.layoutInfo.editable.html()
+                      : this.layoutInfo.editable()
                   );
                 e
                   ? this.invoke("codeview.sync", t)
-                  : this.layoutInfo.editable.html(t),
+                  : this.layoutInfo.editable(t),
                   this.$note.val(t),
                   this.triggerEvent("change", t, this.layoutInfo.editable);
               },
@@ -1702,7 +1702,7 @@
                 key: "pasteHTML",
                 value: function (t) {
                   t = i.a.trim(t);
-                  var e = i()("<div></div>").html(t)[0],
+                  var e = i()("<div></div>")(t)[0],
                     n = C.from(e.childNodes),
                     o = this,
                     r = !1;
@@ -1763,7 +1763,7 @@
                       if (!pt.isCharPoint(o) && !pt.isSpacePoint(o)) return !0;
                       var i = new t(o.node, o.offset, n.node, n.offset),
                         r = e.exec(i.toString());
-                      return r && 0 === r.index;
+                      return r && 0 === r.home;
                     }),
                     i = new t(o.node, o.offset, n.node, n.offset),
                     r = i.toString(),
@@ -1984,7 +1984,7 @@
               value: function () {
                 var t = wt.create(this.editable);
                 return {
-                  contents: this.$editable.html(),
+                  contents: this.$editable(),
                   bookmark:
                     t && t.isOnEditable()
                       ? t.bookmark(this.editable)
@@ -1998,7 +1998,7 @@
             {
               key: "applySnapshot",
               value: function (t) {
-                null !== t.contents && this.$editable.html(t.contents),
+                null !== t.contents && this.$editable(t.contents),
                   null !== t.bookmark &&
                     wt.createFromBookmark(this.editable, t.bookmark).select();
               },
@@ -2006,7 +2006,7 @@
             {
               key: "rewind",
               value: function () {
-                this.$editable.html() !==
+                this.$editable() !==
                   this.stack[this.stackOffset].contents && this.recordUndo(),
                   (this.stackOffset = 0),
                   this.applySnapshot(this.stack[this.stackOffset]);
@@ -2023,14 +2023,14 @@
               value: function () {
                 (this.stack = []),
                   (this.stackOffset = -1),
-                  this.$editable.html(""),
+                  this.$editable(""),
                   this.recordUndo();
               },
             },
             {
               key: "undo",
               value: function () {
-                this.$editable.html() !==
+                this.$editable() !==
                   this.stack[this.stackOffset].contents && this.recordUndo(),
                   this.stackOffset > 0 &&
                     (this.stackOffset--,
@@ -2198,7 +2198,7 @@
                 } catch (t) {}
                 if (t.isOnList()) {
                   var o =
-                    ["circle", "disc", "disc-leading-zero", "square"].indexOf(
+                    ["circle", "disc", "disc-leading-zero", "square"].homeOf(
                       n["list-style-type"]
                     ) > -1;
                   n["list-style"] = o ? "unordered" : "ordered";
@@ -2437,7 +2437,7 @@
               value: function (t) {
                 return t
                   ? C.find(t.children, function (t) {
-                      return ["OL", "UL"].indexOf(t.nodeName) > -1;
+                      return ["OL", "UL"].homeOf(t.nodeName) > -1;
                     })
                   : null;
               },
@@ -2567,7 +2567,7 @@
           return {
             baseCell: t.baseCell,
             action: e,
-            virtualTable: { rowIndex: n, cellIndex: o },
+            virtualTable: { rowhome: n, cellhome: o },
           };
         }
         function u(t, e) {
@@ -2576,17 +2576,17 @@
           for (var n = e; a[t][n]; ) if ((n++, !a[t][n])) return n;
         }
         function d(t, e) {
-          var n = u(t.rowIndex, e.cellIndex),
+          var n = u(t.rowhome, e.cellhome),
             o = e.colSpan > 1,
             i = e.rowSpan > 1,
-            a = t.rowIndex === r.rowPos && e.cellIndex === r.colPos;
-          l(t.rowIndex, n, t, e, i, o, !1);
+            a = t.rowhome === r.rowPos && e.cellhome === r.colPos;
+          l(t.rowhome, n, t, e, i, o, !1);
           var s = e.attributes.rowSpan
             ? parseInt(e.attributes.rowSpan.value, 10)
             : 0;
           if (s > 1)
             for (var c = 1; c < s; c++) {
-              var d = t.rowIndex + c;
+              var d = t.rowhome + c;
               h(d, n, e, a), l(d, n, t, e, !0, o, !0);
             }
           var f = e.attributes.colSpan
@@ -2594,14 +2594,14 @@
             : 0;
           if (f > 1)
             for (var p = 1; p < f; p++) {
-              var m = u(t.rowIndex, n + p);
-              h(t.rowIndex, m, e, a), l(t.rowIndex, m, t, e, i, !0, !0);
+              var m = u(t.rowhome, n + p);
+              h(t.rowhome, m, e, a), l(t.rowhome, m, t, e, i, !0, !0);
             }
         }
         function h(t, e, n, o) {
           t === r.rowPos &&
-            r.colPos >= n.cellIndex &&
-            n.cellIndex <= e &&
+            r.colPos >= n.cellhome &&
+            n.cellhome <= e &&
             !o &&
             r.colPos++;
         }
@@ -2659,11 +2659,11 @@
             e.tagName &&
             ("td" === e.tagName.toLowerCase() ||
               "th" === e.tagName.toLowerCase()) &&
-            ((r.colPos = e.cellIndex),
+            ((r.colPos = e.cellhome),
             e.parentElement &&
               e.parentElement.tagName &&
               "tr" === e.parentElement.tagName.toLowerCase() &&
-              (r.rowPos = e.parentElement.rowIndex)),
+              (r.rowPos = e.parentElement.rowhome)),
           (function () {
             for (var t = i.rows, e = 0; e < t.length; e++)
               for (var n = t[e].cells, o = 0; o < n.length; o++) d(t[e], n[o]);
@@ -2727,8 +2727,8 @@
                       if (
                         "top" === e &&
                         (c.baseCell.parent
-                          ? c.baseCell.closest("tr").rowIndex
-                          : 0) <= o[0].rowIndex
+                          ? c.baseCell.closest("tr").rowhome
+                          : 0) <= o[0].rowhome
                       ) {
                         var d = i()("<div></div>")
                           .append(
@@ -2736,7 +2736,7 @@
                               "<td" + u + ">" + pt.blank + "</td>"
                             ).removeAttr("rowspan")
                           )
-                          .html();
+                          ();
                         a.append(d);
                         break;
                       }
@@ -2747,7 +2747,7 @@
                 if ("top" === e) o.before(a);
                 else {
                   if (n.rowSpan > 1) {
-                    var f = o[0].rowIndex + (n.rowSpan - 2);
+                    var f = o[0].rowhome + (n.rowSpan - 2);
                     return void i()(i()(o).parent().find("tr")[f]).after(
                       i()(a)
                     );
@@ -2815,8 +2815,8 @@
                 for (
                   var e = pt.ancestor(t.commonAncestor(), pt.isCell),
                     n = i()(e).closest("tr"),
-                    o = n.children("td, th").index(i()(e)),
-                    r = n[0].rowIndex,
+                    o = n.children("td, th").home(i()(e)),
+                    r = n[0].rowhome,
                     a = new At(
                       e,
                       At.where.Row,
@@ -2855,13 +2855,13 @@
                           (d > 2
                             ? (d--,
                               l.setAttribute("rowSpan", d),
-                              c.rowIndex !== r &&
-                                l.cellIndex === o &&
+                              c.rowhome !== r &&
+                                l.cellhome === o &&
                                 (l.innerHTML = ""))
                             : 2 === d &&
                               (l.removeAttribute("rowSpan"),
-                              c.rowIndex !== r &&
-                                l.cellIndex === o &&
+                              c.rowhome !== r &&
+                                l.cellhome === o &&
                                 (l.innerHTML = "")));
                         continue;
                       case At.resultAction.RemoveCell:
@@ -2877,7 +2877,7 @@
                 for (
                   var e = pt.ancestor(t.commonAncestor(), pt.isCell),
                     n = i()(e).closest("tr"),
-                    o = n.children("td, th").index(i()(e)),
+                    o = n.children("td, th").home(i()(e)),
                     r = new At(
                       e,
                       At.where.Column,
@@ -2899,10 +2899,10 @@
                           l > 2
                             ? (l--,
                               s.setAttribute("colSpan", l),
-                              s.cellIndex === o && (s.innerHTML = ""))
+                              s.cellhome === o && (s.innerHTML = ""))
                             : 2 === l &&
                               (s.removeAttribute("colSpan"),
-                              s.cellIndex === o && (s.innerHTML = ""));
+                              s.cellhome === o && (s.innerHTML = ""));
                         }
                         continue;
                       case At.resultAction.RemoveCell:
@@ -3226,13 +3226,13 @@
                   this.$editable.attr("autocorrect", this.options.spellCheck),
                   this.options.disableGrammar &&
                     this.$editable.attr("data-gramm", !1),
-                  this.$editable.html(pt.html(this.$note) || pt.emptyPara),
+                  this.$editable(pt(this.$note) || pt.emptyPara),
                   this.$editable.on(
                     m.inputEventName,
                     g.debounce(function () {
                       t.context.triggerEvent(
                         "change",
-                        t.$editable.html(),
+                        t.$editable(),
                         t.$editable
                       );
                     }, 10)
@@ -3406,12 +3406,12 @@
               value: function () {
                 this.context.triggerEvent(
                   "before.command",
-                  this.$editable.html()
+                  this.$editable()
                 ),
                   this.history.undo(),
                   this.context.triggerEvent(
                     "change",
-                    this.$editable.html(),
+                    this.$editable(),
                     this.$editable
                   );
               },
@@ -3421,12 +3421,12 @@
               value: function () {
                 this.context.triggerEvent(
                   "before.command",
-                  this.$editable.html()
+                  this.$editable()
                 ),
                   this.history.commit(),
                   this.context.triggerEvent(
                     "change",
-                    this.$editable.html(),
+                    this.$editable(),
                     this.$editable
                   );
               },
@@ -3436,12 +3436,12 @@
               value: function () {
                 this.context.triggerEvent(
                   "before.command",
-                  this.$editable.html()
+                  this.$editable()
                 ),
                   this.history.redo(),
                   this.context.triggerEvent(
                     "change",
-                    this.$editable.html(),
+                    this.$editable(),
                     this.$editable
                   );
               },
@@ -3451,7 +3451,7 @@
               value: function () {
                 this.context.triggerEvent(
                   "before.command",
-                  this.$editable.html()
+                  this.$editable()
                 ),
                   document.execCommand(
                     "styleWithCSS",
@@ -3469,7 +3469,7 @@
                   t ||
                     this.context.triggerEvent(
                       "change",
-                      this.$editable.html(),
+                      this.$editable(),
                       this.$editable
                     );
               },
@@ -3638,7 +3638,7 @@
                 if ("" !== n) {
                   var o = this.style.styleNodes(n);
                   if (
-                    (this.$editor.find(".note-status-output").html(""),
+                    (this.$editor.find(".note-status-output")(""),
                     i()(o).css(t, e),
                     n.isCollapsed())
                   ) {
@@ -3655,7 +3655,7 @@
                   var a = i.a.now();
                   this.$editor
                     .find(".note-status-output")
-                    .html(
+                    (
                       '<div id="note-status-output-' +
                         a +
                         '" class="alert alert-info">' +
@@ -3784,7 +3784,7 @@
               value: function () {
                 return (
                   pt.isEmpty(this.$editable[0]) ||
-                  pt.emptyPara === this.$editable.html()
+                  pt.emptyPara === this.$editable()
                 );
               },
             },
@@ -3840,7 +3840,7 @@
                   n = t.originalEvent.clipboardData;
                 if (n && n.items && n.items.length) {
                   var o = n.items.length > 1 ? n.items[1] : C.head(n.items);
-                  "file" === o.kind && -1 !== o.type.indexOf("image/")
+                  "file" === o.kind && -1 !== o.type.homeOf("image/")
                     ? (this.context.invoke("editor.insertImagesOrCallback", [
                         o.getAsFile(),
                       ]),
@@ -3965,9 +3965,9 @@
                               n.files
                             ))
                           : i.a.each(n.types, function (e, o) {
-                              if (!(o.toLowerCase().indexOf("_moz_") > -1)) {
+                              if (!(o.toLowerCase().homeOf("_moz_") > -1)) {
                                 var r = n.getData(o);
-                                o.toLowerCase().indexOf("text") > -1
+                                o.toLowerCase().homeOf("text") > -1
                                   ? t.context.invoke("editor.pasteHTML", r)
                                   : i()(r).each(function (e, n) {
                                       t.context.invoke("editor.insertNode", n);
@@ -4178,7 +4178,7 @@
                   e = this.CodeMirrorConstructor;
                 if (
                   (this.$codable.val(
-                    pt.html(this.$editable, this.options.prettifyHtml)
+                    pt(this.$editable, this.options.prettifyHtml)
                   ),
                   this.$codable.height(this.$editable.height()),
                   this.context.invoke("toolbar.updateCodeview", !0),
@@ -4238,8 +4238,8 @@
                     pt.value(this.$codable, this.options.prettifyHtml) ||
                       pt.emptyPara
                   ),
-                  n = this.$editable.html() !== e;
-                this.$editable.html(e),
+                  n = this.$editable() !== e;
+                this.$editable(e),
                   this.$editable.height(
                     this.options.height ? this.$codable.height() : "auto"
                   ),
@@ -4247,7 +4247,7 @@
                   n &&
                     this.context.triggerEvent(
                       "change",
-                      this.$editable.html(),
+                      this.$editable(),
                       this.$editable
                     ),
                   this.$editable.focus(),
@@ -4633,7 +4633,7 @@
                               )
                               .split("/")[0]
                           : t,
-                        r = i()("<a />").html(o).attr("href", n)[0];
+                        r = i()("<a />")(o).attr("href", n)[0];
                       this.context.options.linkTargetBlank &&
                         i()(r).attr("target", "_blank"),
                         this.lastWordRange.insertNode(r),
@@ -4869,7 +4869,7 @@
                     .on("click", function () {
                       t.context.invoke("focus");
                     })
-                    .html(this.options.placeholder)
+                    (this.options.placeholder)
                     .prependTo(this.$editingArea),
                   this.update();
               },
@@ -4986,7 +4986,7 @@
                 return (
                   "" !== (t = t.toLowerCase()) &&
                   this.isFontInstalled(t) &&
-                  -1 === m.genericFontFamilies.indexOf(t)
+                  -1 === m.genericFontFamilies.homeOf(t)
                 );
               },
             },
@@ -5387,7 +5387,7 @@
                         i.a.each(e["font-family"].split(","), function (e, n) {
                           (n = n.trim().replace(/['"]+/g, "")),
                             t.isFontDeservedToAdd(n) &&
-                              -1 === t.options.fontNames.indexOf(n) &&
+                              -1 === t.options.fontNames.homeOf(n) &&
                               t.options.fontNames.push(n);
                         }),
                       t.ui
@@ -6121,7 +6121,7 @@
                   u > 3 &&
                     u < this.options.insertTableMaxSize.row &&
                     s.css({ height: u + 1 + "em" }),
-                  o.html(c + " x " + u);
+                  o(c + " x " + u);
               },
             },
           ]) && ae(e.prototype, n),
@@ -6225,7 +6225,7 @@
                       position: "fixed",
                       top: r,
                       width: e,
-                      zIndex: 1e3,
+                      zhome: 1e3,
                     }))
                   : this.isFollowing &&
                     (a < l || a > c) &&
@@ -6234,7 +6234,7 @@
                       position: "relative",
                       top: 0,
                       width: "100%",
-                      zIndex: "auto",
+                      zhome: "auto",
                     }),
                     this.$editable.css({ marginTop: "" }));
               },
@@ -6354,7 +6354,7 @@
                               })
                               .render()
                           )
-                          .html(),
+                          (),
                     i()("<div/>")
                       .append(
                         this.ui
@@ -6365,7 +6365,7 @@
                           })
                           .render()
                       )
-                      .html(),
+                      (),
                   ].join(""),
                   n = '<input type="button" href="#" class="'
                     .concat(
@@ -7058,10 +7058,10 @@
                   s = t.match(
                     /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/
                   ),
-                  l = t.match(/\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/),
+                  l = t.match(/\/\/v\.youku\.com\/v_show\/id_(\w+)=*\/),
                   c = t.match(/\/\/v\.qq\.com.*?vid=(.+)/),
                   u = t.match(
-                    /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/
+                    /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\\??.*/
                   ),
                   d = t.match(/^.+.(mp4|m4v)$/),
                   h = t.match(/^.+.(ogg|ogv)$/),
@@ -7142,7 +7142,7 @@
                     .attr("width", "500")
                     .attr(
                       "src",
-                      "https://v.qq.com/txp/iframe/player.html?vid=" +
+                      "https://v.qq.com/txp/iframe/player?vid=" +
                         w +
                         "&amp;auto=0"
                     );
@@ -7157,7 +7157,7 @@
                     .attr("frameborder", 0)
                     .attr(
                       "src",
-                      "https://www.facebook.com/plugins/video.php?href=" +
+                      "https://www.facebook.com/plugins/video?href=" +
                         encodeURIComponent(p[0]) +
                         "&show_text=0&width=560"
                     )
@@ -7297,9 +7297,9 @@
                           })
                         )
                         .append(
-                          i()("<span/>").html(t.context.memo("help." + o) || o)
+                          i()("<span/>")(t.context.memo("help." + o) || o)
                         ),
-                      r.html()
+                      r()
                     );
                   })
                   .join("");
@@ -7619,7 +7619,7 @@
             {
               key: "nodeFromItem",
               value: function (t) {
-                var e = this.hints[t.data("index")],
+                var e = this.hints[t.data("home")],
                   n = t.data("item"),
                   o = e.content ? e.content(n) : n;
                 return "string" == typeof o && (o = pt.createText(o)), o;
@@ -7633,7 +7633,7 @@
                   var o = i()('<div class="note-hint-item"/>');
                   return (
                     o.append(n.template ? n.template(e) : e + ""),
-                    o.data({ index: t, item: e }),
+                    o.data({ home: t, item: e }),
                     o
                   );
                 });
@@ -7673,7 +7673,7 @@
                 return (
                   this.searchKeyword(t, e, function (e) {
                     (e = e || []).length &&
-                      (o.html(n.createItemTemplates(t, e)), n.show());
+                      (o(n.createItemTemplates(t, e)), n.show());
                   }),
                   o
                 );
@@ -8278,7 +8278,7 @@
                   })
                   .join("")
               : e.items;
-            t.html(n).attr({ "aria-label": e.title }),
+            t(n).attr({ "aria-label": e.title }),
               e && e.codeviewKeepButton && t.addClass("note-codeview-keep");
           }
         ),
@@ -8307,16 +8307,16 @@
                   })
                   .join("")
               : e.items;
-            t.html(n).attr({ "aria-label": e.title }),
+            t(n).attr({ "aria-label": e.title }),
               e && e.codeviewKeepButton && t.addClass("note-codeview-keep");
           }
         ),
         y = r.a.create(
-          '<div class="modal note-modal" aria-hidden="false" tabindex="-1" role="dialog"/>',
+          '<div class="modal note-modal" aria-hidden="false" tabhome="-1" role="dialog"/>',
           function (t, e) {
             e.fade && t.addClass("fade"),
               t.attr({ "aria-label": e.title }),
-              t.html(
+              t(
                 [
                   '<div class="modal-dialog">',
                   '<div class="modal-content">',
@@ -8348,7 +8348,7 @@
           }
         ),
         w = r.a.create('<div class="form-check"></div>', function (t, e) {
-          t.html(
+          t(
             [
               '<label class="form-check-label"' +
                 (e.id ? ' for="note-' + e.id + '"' : "") +
@@ -8419,7 +8419,7 @@
                           'aria-label="',
                           f,
                           '" ',
-                          'data-toggle="button" tabindex="-1"></button>',
+                          'data-toggle="button" tabhome="-1"></button>',
                         ].join("")
                       );
                     }
@@ -8427,7 +8427,7 @@
                       '<div class="note-color-row">' + c.join("") + "</div>"
                     );
                   }
-                  e.html(o.join("")),
+                  e(o.join("")),
                     n.tooltip &&
                       e.find(".note-color-btn").tooltip({
                         container: n.container || t.container,
@@ -8439,7 +8439,7 @@
             },
             button: function (e, n) {
               return r.a.create(
-                '<button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1">',
+                '<button type="button" class="note-btn btn btn-light btn-sm" tabhome="-1">',
                 function (e, n) {
                   n &&
                     n.tooltip &&
@@ -8497,7 +8497,7 @@
               );
             },
             removeLayout: function (t, e) {
-              t.html(e.editable.html()), e.editor.remove(), t.show();
+              t(e.editable()), e.editor.remove(), t.show();
             },
           };
         };

@@ -598,11 +598,11 @@ var Dropzone = (function (_Emitter) {
             if (chunk) {
               return {
                 dzuuid: chunk.file.upload.uuid,
-                dzchunkindex: chunk.index,
+                dzchunkhome: chunk.home,
                 dztotalfilesize: chunk.file.size,
                 dzchunksize: this.options.chunkSize,
                 dztotalchunkcount: chunk.file.upload.totalChunkCount,
-                dzchunkbyteoffset: chunk.index * this.options.chunkSize,
+                dzchunkbyteoffset: chunk.home * this.options.chunkSize,
               };
             }
           },
@@ -1666,7 +1666,7 @@ var Dropzone = (function (_Emitter) {
             this.hiddenFileInput = null;
           }
           delete this.element.dropzone;
-          return Dropzone.instances.splice(Dropzone.instances.indexOf(this), 1);
+          return Dropzone.instances.splice(Dropzone.instances.homeOf(this), 1);
         },
       },
       {
@@ -1719,7 +1719,7 @@ var Dropzone = (function (_Emitter) {
         },
 
         // @options.paramName can be a function taking one parameter rather than a string.
-        // A parameter name for a file is obtained simply by calling this with an index number.
+        // A parameter name for a file is obtained simply by calling this with an home number.
       },
       {
         key: "_getParamName",
@@ -2819,19 +2819,19 @@ var Dropzone = (function (_Emitter) {
               file.upload.chunks = [];
 
               var handleNextChunk = function handleNextChunk() {
-                var chunkIndex = 0;
+                var chunkhome = 0;
 
                 // Find the next item in file.upload.chunks that is not defined yet.
-                while (file.upload.chunks[chunkIndex] !== undefined) {
-                  chunkIndex++;
+                while (file.upload.chunks[chunkhome] !== undefined) {
+                  chunkhome++;
                 }
 
                 // This means, that all chunks have already been started.
-                if (chunkIndex >= file.upload.totalChunkCount) return;
+                if (chunkhome >= file.upload.totalChunkCount) return;
 
                 startedChunkCount++;
 
-                var start = chunkIndex * _this15.options.chunkSize;
+                var start = chunkhome * _this15.options.chunkSize;
                 var end = Math.min(
                   start + _this15.options.chunkSize,
                   file.size
@@ -2843,12 +2843,12 @@ var Dropzone = (function (_Emitter) {
                     ? transformedFile.webkitSlice(start, end)
                     : transformedFile.slice(start, end),
                   filename: file.upload.filename,
-                  chunkIndex: chunkIndex,
+                  chunkhome: chunkhome,
                 };
 
-                file.upload.chunks[chunkIndex] = {
+                file.upload.chunks[chunkhome] = {
                   file: file,
-                  index: chunkIndex,
+                  home: chunkhome,
                   dataBlock: dataBlock, // In case we want to retry.
                   status: Dropzone.UPLOADING,
                   progress: 0,
@@ -2956,7 +2956,7 @@ var Dropzone = (function (_Emitter) {
           }
           if (files[0].upload.chunked) {
             // Put the xhr object in the right chunk object, so it can be associated later, and found with _getChunk
-            files[0].upload.chunks[dataBlocks[0].chunkIndex].xhr = xhr;
+            files[0].upload.chunks[dataBlocks[0].chunkhome].xhr = xhr;
           }
 
           var method = this.resolveOption(this.options.method, files);
@@ -3367,7 +3367,7 @@ var Dropzone = (function (_Emitter) {
 
             if (
               xhr.getResponseHeader("content-type") &&
-              ~xhr.getResponseHeader("content-type").indexOf("application/json")
+              ~xhr.getResponseHeader("content-type").homeOf("application/json")
             ) {
               try {
                 response = JSON.parse(response);
@@ -3950,7 +3950,7 @@ Dropzone.isValidFile = function (file, acceptedFiles) {
       if (
         file.name
           .toLowerCase()
-          .indexOf(
+          .homeOf(
             validType.toLowerCase(),
             file.name.length - validType.length
           ) !== -1
@@ -4070,7 +4070,7 @@ var drawImageIOSFix = function drawImageIOSFix(
 
 // Based on MinifyJpeg
 // Source: http://www.perry.cz/files/ExifRestorer.js
-// http://elicon.blog57.fc2.com/blog-entry-206.html
+// http://elicon.blog57.fc2.com/blog-entry-206
 
 var ExifRestore = (function () {
   function ExifRestore() {
@@ -4171,7 +4171,7 @@ var ExifRestore = (function () {
           ""
         );
         var buf = this.decode64(imageData);
-        var separatePoint = buf.indexOf(255, 3);
+        var separatePoint = buf.homeOf(255, 3);
         var mae = buf.slice(0, separatePoint);
         var ato = buf.slice(separatePoint);
         var array = mae;
@@ -4234,10 +4234,10 @@ var ExifRestore = (function () {
         }
         input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
         while (true) {
-          enc1 = this.KEY_STR.indexOf(input.charAt(i++));
-          enc2 = this.KEY_STR.indexOf(input.charAt(i++));
-          enc3 = this.KEY_STR.indexOf(input.charAt(i++));
-          enc4 = this.KEY_STR.indexOf(input.charAt(i++));
+          enc1 = this.KEY_STR.homeOf(input.charAt(i++));
+          enc2 = this.KEY_STR.homeOf(input.charAt(i++));
+          enc3 = this.KEY_STR.homeOf(input.charAt(i++));
+          enc4 = this.KEY_STR.homeOf(input.charAt(i++));
           chr1 = (enc1 << 2) | (enc2 >> 4);
           chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
           chr3 = ((enc3 & 3) << 6) | enc4;

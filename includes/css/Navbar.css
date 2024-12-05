@@ -1,0 +1,466 @@
+.nav-bar {
+  width: 100% !important;
+  position: relative;
+  padding: 20px 80px !important;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 2560px !important;
+  margin: 0 auto;
+}
+
+.navbar-logo {
+  width: 150px;
+}
+
+.navbar-logo img {
+  width: 100%;
+}
+
+.navbar-divider {
+  width: 1px;
+  height: 50%;
+  background-color: #dddddd;
+}
+
+.navbar-search-bar {
+  background-color: white;
+  border: 1px solid #0000001f;
+  border-radius: 50px;
+  height: 55px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0px #00000015;
+}
+
+.navbar-search-bar form {
+  width: 100% !important;
+  height: 100% !important;
+  /* background-color: green; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.navbar-search-bar input::placeholder {
+  color: #000;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.navbar-search-bar input {
+  position: relative;
+  height: 100%;
+  border-radius: 50px;
+  padding: 0 0 0 20px;
+  width: 200px;
+  border: none;
+}
+
+.navbar-search-bar select {
+  cursor: pointer;
+  position: relative;
+  height: 100%;
+  border-radius: 50px;
+  padding: 0 0 0 20px;
+  width: 200px !important;
+  border: none;
+}
+
+.navbar-search-bar input:hover {
+  background-color: #00000015;
+}
+
+.navbar-search-bar select:hover {
+  background-color: #00000015;
+}
+
+.navbar-search-bar button {
+  position: relative;
+  height: 42px;
+  width: 42px;
+  margin: 0 8px;
+  border-radius: 50px;
+  border: none;
+  background-color: #5dc3f3;
+  color: #fff;
+  transition: all ease 0.4s;
+  border: 2px solid #5dc3f3;
+}
+
+.navbar-search-bar button:hover {
+  background-color: #fff;
+  border: 2px solid #5dc3f3;
+  color: #5dc3f3;
+}
+
+.navbar-search-bar button:hover i {
+  color: #5dc3f3;
+}
+
+.navbar-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  border: 1px solid #0000001f;
+  border-radius: 50px;
+  height: 55px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0px #00000015;
+  padding: 0 0 0 15px !important;
+}
+
+.navbar-profile a {
+  color: #000;
+}
+
+.navbar-profile a:hover {
+  color: #5dc3f3;
+}
+
+.navbar-profile a i {
+  color: #5dc3f3;
+  margin-right: 10px;
+}
+
+.navbar-profile a.navbar-menu i {
+  font-size: 30px;
+}
+
+.navbar-profile a.add-listing-btn {
+  background-color: #5dc3f3;
+  border: 2px solid #5dc3f3;
+  height: 42px;
+  width: 42px;
+  margin-right: 8px;
+  color: white;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all ease 0.4s;
+}
+
+.navbar-profile a.add-listing-btn:hover {
+  background-color: #fff;
+  border: 2px solid #5dc3f3;
+  color: #5dc3f3;
+}
+
+.navbar-profile a.add-listing-btn:hover i {
+  color: #5dc3f3;
+}
+
+.navbar-profile a.add-listing-btn i {
+  font-size: 15px;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin: 0;
+  transition: all ease 0.4s;
+}
+
+.navbar-profile a.profile-logo {
+  display: none;
+  margin-left: 10px;
+}
+
+.navbar-menu-dropdown {
+  position: absolute;
+  transform: translate(-10px, 175px);
+  z-index: 9999;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0px #00000015;
+  width: 105px;
+  display: none;
+}
+
+.navbar-menu-dropdown ul {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.navbar-menu-dropdown ul li {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.icon {
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 100%;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 30px;
+  height: 3px;
+  background: #5dc3f3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+
+.hamburger:before,
+.hamburger:after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #5dc3f3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+
+.hamburger:before {
+  top: -10px;
+}
+
+.hamburger:after {
+  top: 10px;
+}
+
+.icon.ac .hamburger {
+  background: rgba(0, 0, 0, 0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+}
+
+.icon.ac .hamburger:before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.icon.ac .hamburger:after {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+@media (max-width: 1440px) {
+  .nav-bar {
+    padding: 20px 40px !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .navbar-search-bar input {
+    width: 150px;
+  }
+  .navbar-search-bar select {
+    width: 150px !important;
+  }
+  .navbar-profile a.add-listing-btn {
+    font-size: 18px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .navbar-search-bar input {
+    width: 100px;
+  }
+  .navbar-search-bar select {
+    width: 100px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar-logo {
+    width: 150px;
+  }
+  .navbar-logo img {
+    width: 100%;
+  }
+  .navbar-search-bar input {
+    width: 120px;
+  }
+  .navbar-search-bar select {
+    width: 120px !important;
+  }
+  .navbar-profile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-bar {
+    padding: 20px 24px !important;
+  }
+  .navbar-logo {
+    display: none;
+  }
+  .navbar-search-bar{
+    width: 100%;
+  }
+  .navbar-search-bar input {
+    width: 92%;
+  }
+  .navbar-divider {
+    display: none;
+  }
+  .navbar-search-location,
+  .navbar-search-bar select {
+    display: none !important;
+  }
+  .navbar-container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 545px) {
+  .navbar-search-bar input {
+    width: 88%;
+  }
+}
+
+@media (max-width: 475px) {
+  .navbar-container {
+    justify-content: center;
+  }
+  .navbar-search-bar {
+    width: 100%;
+  }
+  .navbar-search-bar input {
+    width: 85%;
+  }
+  .navbar-divider {
+    display: none;
+  }
+  .navbar-profile a.profile-logo {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar-search-bar input {
+    width: 80%;
+  }
+}
+
+.bottom-navbar {
+  width: 100%;
+  height: fit-content;
+  position: fixed;
+  background-color: #fff;
+  display: none;
+  bottom: 0 !important;
+  z-index: 999999;
+  padding: 0 !important;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 -4px 8px 0px #00000030;
+  padding: 5px !important;
+}
+
+.bottom-navbar-container {
+  width: 100%;
+  padding: 0 15px !important;
+}
+
+.bottom-navbar-container ul {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5.5%;
+  padding: 0 !important;
+  list-style: none;
+}
+
+.bottom-navbar-container ul li a i {
+  font-size: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 0.3s;
+}
+
+.bottom-navbar-container ul li a i:hover {
+  background-color: #00000015;
+}
+
+.bottom-navbar-container ul li:nth-child(3) a i {
+  font-size: 25px;
+  width: 90px;
+  height: 90px;
+  transform: translateY(-40%);
+  box-shadow: 0 -4px 8px 0px #00000030;
+  background-color: #5dc3f3;
+  color: #fff !important;
+  transition: all ease 0.3s;
+}
+
+.bottom-navbar-container ul li:nth-child(3) a i:hover {
+  background-color: #4898bd;
+  color: #121212 !important;
+}
+
+@media (max-width: 900px) {
+  .bottom-navbar {
+    display: block;
+  }
+  .bottom-navbar-container ul {
+    gap: 8%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bottom-navbar-container ul {
+    gap: 5%;
+  }
+}
+
+@media (max-width: 500px) {
+  .bottom-navbar-container ul {
+    gap: 3.5%;
+  }
+  .bottom-navbar-container ul li a i {
+    font-size: 22px;
+    width: 60px;
+    height: 60px;
+  }
+  .bottom-navbar-container ul li:nth-child(3) a i {
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* .bottom-navbar{
+    top: 93.6vh;
+  } */
+  .bottom-navbar-container ul {
+    gap: 2%;
+  }
+  .bottom-navbar-container ul li a i {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+  }
+  .bottom-navbar-container ul li:nth-child(3) a i {
+    width: 50px;
+    height: 50px;
+  }
+}
